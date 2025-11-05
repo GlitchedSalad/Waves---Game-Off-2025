@@ -1,0 +1,252 @@
+[gd_scene load_steps=20 format=3 uid="uid://c4yhkvcyss5u6"]
+
+[ext_resource type="Script" uid="uid://xdf5jjorhyp0" path="res://PlayerCharacter/scripts/player.gd" id="1_glpr6"]
+[ext_resource type="Script" uid="uid://8ml0aatbdmsh" path="res://PlayerCharacter/scripts/camera_controller.gd" id="2_pjt0s"]
+[ext_resource type="Texture2D" uid="uid://c7721v7ms8wx6" path="res://PlayerCharacter/crosshair.png" id="3_bhb5x"]
+[ext_resource type="PackedScene" uid="uid://0fsukifbaqlj" path="res://Interact/interact_ray.tscn" id="3_qht06"]
+[ext_resource type="Texture2D" uid="uid://ht0gdd4w5xt5" path="res://Textures/right2.png" id="4_12jk3"]
+[ext_resource type="Script" uid="uid://bv6dh211hikuy" path="res://PlayerCharacter/scripts/cross_hair.gd" id="5_fjf58"]
+[ext_resource type="Texture2D" uid="uid://tci6fxb1jr3b" path="res://Textures/right3.png" id="5_h2tqs"]
+[ext_resource type="Texture2D" uid="uid://djomvqagtjtx8" path="res://Textures/right1.png" id="6_7dbeg"]
+[ext_resource type="Script" uid="uid://chxoj2m8jp6v5" path="res://PlayerCharacter/scenes/hands.gd" id="6_wlegc"]
+[ext_resource type="Texture2D" uid="uid://cwqj4mokgi77b" path="res://Textures/left1.png" id="7_12jk3"]
+[ext_resource type="Texture2D" uid="uid://bjrq00a2h6aot" path="res://Textures/left2.png" id="9_12jk3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d5b0p"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_135y1"]
+
+[sub_resource type="Animation" id="Animation_tfn1i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Left:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_12jk3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Left:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-363, 143)]
+}
+
+[sub_resource type="Animation" id="Animation_h2tqs"]
+resource_name = "spell"
+length = 0.500003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Left:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("7_12jk3"), ExtResource("9_12jk3"), ExtResource("7_12jk3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Left:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.366667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(-363, 143), Vector2(-219, 12), Vector2(-363, 143)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../CameraControllerAnchor/InteractRay")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.133333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shoot"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cy5jc"]
+_data = {
+&"RESET": SubResource("Animation_tfn1i"),
+&"spell": SubResource("Animation_h2tqs")
+}
+
+[sub_resource type="Animation" id="Animation_cy5jc"]
+resource_name = "wave"
+length = 0.333337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Right:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.306625),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(561, 251), Vector2(301, 93), Vector2(561, 251)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Right:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.133333, 0.306625),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_7dbeg"), ExtResource("4_12jk3"), ExtResource("5_h2tqs"), ExtResource("6_7dbeg")]
+}
+
+[sub_resource type="Animation" id="Animation_h7ssa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Right:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(561, 251)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Right:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_7dbeg")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cpw3t"]
+_data = {
+&"RESET": SubResource("Animation_h7ssa"),
+&"wave": SubResource("Animation_cy5jc")
+}
+
+[node name="PlayerController" type="CharacterBody3D" groups=["Player"]]
+slide_on_ceiling = false
+floor_block_on_wall = false
+script = ExtResource("1_glpr6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_d5b0p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_135y1")
+
+[node name="CameraController" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+top_level = true
+script = ExtResource("2_pjt0s")
+
+[node name="Camera3D" type="Camera3D" parent="CameraController"]
+size = 14.333
+
+[node name="CameraControllerAnchor" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="InteractRay" parent="CameraControllerAnchor" node_paths=PackedStringArray("left_anim", "right_anim") instance=ExtResource("3_qht06")]
+left_anim = NodePath("../../UI/Hands/LeftAnim")
+right_anim = NodePath("../../UI/Hands/RightAnim")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CrossHair" type="TextureRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_bhb5x")
+expand_mode = 1
+script = ExtResource("5_fjf58")
+
+[node name="Hands" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_wlegc")
+
+[node name="Right" type="TextureRect" parent="UI/Hands"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -591.0
+offset_top = -397.0
+offset_right = 609.0
+offset_bottom = 403.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("6_7dbeg")
+
+[node name="Left" type="TextureRect" parent="UI/Hands"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -363.0
+offset_top = -505.0
+offset_right = 837.0
+offset_bottom = 295.0
+grow_vertical = 0
+texture = ExtResource("7_12jk3")
+
+[node name="LeftAnim" type="AnimationPlayer" parent="UI/Hands"]
+libraries = {
+&"": SubResource("AnimationLibrary_cy5jc")
+}
+
+[node name="RightAnim" type="AnimationPlayer" parent="UI/Hands"]
+libraries = {
+&"": SubResource("AnimationLibrary_cpw3t")
+}
+
+[connection signal="colliding" from="CameraControllerAnchor/InteractRay" to="UI/CrossHair" method="_on_interact_ray_colliding"]
