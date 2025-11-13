@@ -27,7 +27,7 @@ func _physics_process(_delta: float) -> void:
 	if not is_colliding():
 		colliding.emit(false)
 		return
-		
+	
 	var collider := get_collider()
 	
 	if collider is not Interactable:
@@ -42,5 +42,5 @@ func _physics_process(_delta: float) -> void:
 	
 	promt.text = collider.promt_message
 	
-	if Input.is_action_just_pressed("interact"):
+	if Input.is_action_just_pressed("wave"):
 		collider.interact(self)

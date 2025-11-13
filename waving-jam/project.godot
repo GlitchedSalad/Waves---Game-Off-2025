@@ -15,11 +15,6 @@ run/main_scene="uid://n2iib25j6w8y"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
-[display]
-
-window/stretch/mode="canvas_items"
-window/stretch/aspect="ignore"
-
 [global_group]
 
 Player=""
