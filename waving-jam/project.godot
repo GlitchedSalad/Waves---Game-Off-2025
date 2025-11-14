@@ -13,7 +13,15 @@ config_version=5
 config/name="waving jam"
 run/main_scene="uid://n2iib25j6w8y"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+
+[file_customization]
+
+folder_colors={
+"res://PlayerCharacter/": "green",
+"res://Scenes/": "red",
+"res://Scripts/": "yellow",
+"res://Textures/": "blue"
+}
 
 [global_group]
 
