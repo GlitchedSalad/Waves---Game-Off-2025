@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3t3j8v8euqmg"
-path.s3tc="res://.godot/imported/island_island2.png-26382b34f0d1d3758dc3b7925343de9d.s3tc.ctex"
+uid="uid://gous01dxf4on"
+path.s3tc="res://.godot/imported/pillar_white.png-f06cabe4e7fdbd8d9e89d7c703727410.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "f1bbed085925c1621d3570d2caa8a615"
+"md5": "2d2d5da0e12a30951e6b102ecbde2633"
 }
 
 [deps]
 
-source_file="res://island_island2.png"
-dest_files=["res://.godot/imported/island_island2.png-26382b34f0d1d3758dc3b7925343de9d.s3tc.ctex"]
+source_file="res://3DAssets/pillar_white.png"
+dest_files=["res://.godot/imported/pillar_white.png-f06cabe4e7fdbd8d9e89d7c703727410.s3tc.ctex"]
 
 [params]
 

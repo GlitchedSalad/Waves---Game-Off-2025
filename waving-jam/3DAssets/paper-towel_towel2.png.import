@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://besfydt2b5s2t"
-path.s3tc="res://.godot/imported/WaterDistortion.png-f69e49dafc053df00c55e4bd74e8634e.s3tc.ctex"
+uid="uid://cxyld6m6c3yr1"
+path.s3tc="res://.godot/imported/paper-towel_towel2.png-c8fd5c2f6b21372be2b50e4f0b333013.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "60178d5b5821acd581bba4098e2739e9"
+}
 
 [deps]
 
-source_file="res://WaterDistortion.png"
-dest_files=["res://.godot/imported/WaterDistortion.png-f69e49dafc053df00c55e4bd74e8634e.s3tc.ctex"]
+source_file="res://3DAssets/paper-towel_towel2.png"
+dest_files=["res://.godot/imported/paper-towel_towel2.png-c8fd5c2f6b21372be2b50e4f0b333013.s3tc.ctex"]
 
 [params]
 

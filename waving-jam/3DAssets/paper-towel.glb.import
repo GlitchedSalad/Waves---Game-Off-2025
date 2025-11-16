@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cxfl0i5jxumpx"
-path="res://.godot/imported/island.glb-12d127ce795a8b84e978b84c8934abac.scn"
+uid="uid://cufmyii2kebv4"
+path="res://.godot/imported/paper-towel.glb-7335eef392ffd8358a519a16a22cf8a4.scn"
 
 [deps]
 
-source_file="res://island.glb"
-dest_files=["res://.godot/imported/island.glb-12d127ce795a8b84e978b84c8934abac.scn"]
+source_file="res://3DAssets/paper-towel.glb"
+dest_files=["res://.godot/imported/paper-towel.glb-7335eef392ffd8358a519a16a22cf8a4.scn"]
 
 [params]
 

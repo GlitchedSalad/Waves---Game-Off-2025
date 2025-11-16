@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://citiy58i55cc"
-path.s3tc="res://.godot/imported/magic4.png-a710fb8323f026289e5a578457c19a16.s3tc.ctex"
+uid="uid://wgvos47hsnc"
+path.s3tc="res://.godot/imported/paper_towel_towel2.png-308cbadfdb2a0f835701e5cc917c9a47.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "60178d5b5821acd581bba4098e2739e9"
+}
 
 [deps]
 
-source_file="res://Textures/magic4.png"
-dest_files=["res://.godot/imported/magic4.png-a710fb8323f026289e5a578457c19a16.s3tc.ctex"]
+source_file="res://3DAssets/paper_towel_towel2.png"
+dest_files=["res://.godot/imported/paper_towel_towel2.png-308cbadfdb2a0f835701e5cc917c9a47.s3tc.ctex"]
 
 [params]
 
