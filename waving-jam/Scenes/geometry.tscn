@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3e08bj4ma6mh"]
+
+[ext_resource type="PackedScene" uid="uid://cxfl0i5jxumpx" path="res://3DAssets/island.glb" id="1_uf6ts"]
+[ext_resource type="Shader" uid="uid://ccvw4jfg1xpx6" path="res://Scripts/geometry3.gdshader" id="2_xcskt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oowuu"]
+render_priority = 0
+shader = ExtResource("2_xcskt")
+shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
+shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
+shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/distortion_speed = 2.0
+shader_parameter/tile = Vector2(50, 50)
+shader_parameter/height = 2.0
+shader_parameter/wave_size = Vector2(2, 2)
+shader_parameter/wave_speed = 2.0
+shader_parameter/edge_scale = 0.5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yxtvf"]
+material = SubResource("ShaderMaterial_oowuu")
+size = Vector2(500, 500)
+subdivide_width = 64
+subdivide_depth = 64
+
+[node name="Geometry" type="Node3D"]
+
+[node name="island" parent="." instance=ExtResource("1_uf6ts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.0977, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.743908, 0)
+mesh = SubResource("PlaneMesh_yxtvf")

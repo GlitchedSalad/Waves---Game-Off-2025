@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://b04jwwfkxlajt"]
+
+[ext_resource type="Script" uid="uid://bx4b1278hr7oi" path="res://Scripts/flapper.gd" id="1_1g6tv"]
+[ext_resource type="Texture2D" uid="uid://c3doimts1iwck" path="res://Textures/Enemies/Flapper/flapper1.png" id="2_y58p6"]
+[ext_resource type="Texture2D" uid="uid://dtyn4q8fmycv1" path="res://Textures/Enemies/Flapper/flapper2.png" id="3_bei4r"]
+[ext_resource type="Texture2D" uid="uid://beednbppb4ysp" path="res://Textures/Enemies/Flapper/flapper3.png" id="4_ne2sn"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mrqeg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_okhlb"]
+animations = [{
+"frames": [{
+"duration": 1.4,
+"texture": ExtResource("2_y58p6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bei4r")
+}, {
+"duration": 0.9,
+"texture": ExtResource("4_ne2sn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Flapper" type="CharacterBody3D" groups=["Enemy"]]
+script = ExtResource("1_1g6tv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_mrqeg")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+billboard = 1
+double_sided = false
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_okhlb")
+frame_progress = 0.0396943
