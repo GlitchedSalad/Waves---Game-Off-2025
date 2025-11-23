@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="waving jam"
-run/main_scene="uid://n2iib25j6w8y"
+run/main_scene="uid://cv0tm5wj6mcve"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
 [display]
@@ -22,6 +22,8 @@ window/stretch/aspect="expand"
 [file_customization]
 
 folder_colors={
+"res://3DAssets/": "purple",
+"res://Audio/": "pink",
 "res://PlayerCharacter/": "green",
 "res://Scenes/": "red",
 "res://Scripts/": "yellow",

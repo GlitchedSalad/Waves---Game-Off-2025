@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://qbtpgjp0j0i0"]
+
+[ext_resource type="Script" uid="uid://dbnck1nw7ihyt" path="res://Scripts/jumper.gd" id="1_kxvoi"]
+[ext_resource type="Texture2D" uid="uid://gl414o3iax43" path="res://Textures/Enemies/Hopper/Hopper1.png" id="2_s2nl1"]
+[ext_resource type="Texture2D" uid="uid://dctaqwtemu4wh" path="res://Textures/Enemies/Hopper/HopperHurt2.png" id="3_6xjq6"]
+[ext_resource type="Texture2D" uid="uid://c4pxa2ieuplbs" path="res://Textures/Enemies/Hopper/Hopper2.png" id="3_83j4e"]
+[ext_resource type="Texture2D" uid="uid://cyao6hfq78f0b" path="res://Textures/Enemies/Hopper/Hopper3.png" id="4_6xjq6"]
+[ext_resource type="Texture2D" uid="uid://byx1vl0c03jl4" path="res://Textures/Enemies/Hopper/HopperHurt1.png" id="4_ya111"]
+[ext_resource type="PackedScene" uid="uid://b52gx18ylb8b3" path="res://Scenes/BaseNodes/health_node.tscn" id="5_s2nl1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mrqeg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bua6k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s2nl1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6xjq6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ya111")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_83j4e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6xjq6")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 6.0
+}]
+
+[node name="Jumper" type="CharacterBody3D" groups=["Enemy"]]
+script = ExtResource("1_kxvoi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_mrqeg")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+billboard = 2
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_bua6k")
+animation = &"jump"
+frame = 1
+frame_progress = 1.0
+
+[node name="HealthNode" parent="." instance=ExtResource("5_s2nl1")]
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="death" from="HealthNode" to="." method="_on_health_node_death"]

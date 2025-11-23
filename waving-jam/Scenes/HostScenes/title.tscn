@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv0tm5wj6mcve"]
+
+[ext_resource type="Script" uid="uid://qpxgh4tcnwdb" path="res://Scripts/title.gd" id="1_ekrfg"]
+[ext_resource type="PackedScene" uid="uid://b3e08bj4ma6mh" path="res://Scenes/geometry.tscn" id="1_w31pl"]
+
+[node name="Title" type="Node3D"]
+script = ExtResource("1_ekrfg")
+
+[node name="Geometry" parent="." instance=ExtResource("1_w31pl")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.60446, 0.796636, 0, -0.796636, -0.60446, -42.7685, 37.0629, -2.25272)
+sky_mode = 1
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -42.7685, 37.0629, 0)
+projection = 1
+size = 90.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Title" type="Label" parent="CanvasLayer"]
+offset_left = 57.0
+offset_top = 93.0
+offset_right = 576.0
+offset_bottom = 258.0
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 60
+text = "Wizards hate waves
+of water & enemies"
+
+[node name="Play" type="Button" parent="CanvasLayer"]
+offset_left = 118.0
+offset_top = 322.0
+offset_right = 219.0
+offset_bottom = 390.0
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 30
+text = "Play"
+flat = true
+
+[node name="Quit" type="Button" parent="CanvasLayer"]
+offset_left = 436.0
+offset_top = 322.0
+offset_right = 537.0
+offset_bottom = 390.0
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 30
+text = "Quit
+"
+flat = true
+
+[connection signal="pressed" from="CanvasLayer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/Quit" to="." method="_on_quit_pressed"]

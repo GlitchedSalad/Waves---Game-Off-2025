@@ -1,14 +1,16 @@
 extends Node3D
 
-@export var spawn_manager : Node
 @onready var anim := $AnimationPlayer
 var player : Node3D
+
+signal open_shop
 
 func _ready() -> void:
 	anim.play("init")
 	anim.play("load")
 
-func _on_static_body_3d_interacted(body: Variant) -> void:
+func _on_static_body_3d_interacted(_body: Variant) -> void:
+	emit_signal("open_shop")
 	$"paper-towel/StaticBody3D".enabled = false
 	anim.play("out")
 

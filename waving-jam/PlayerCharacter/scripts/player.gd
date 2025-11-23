@@ -4,6 +4,8 @@ extends CharacterBody3D
 const SPEED = 4.0
 const JUMPHEIGHT = 5.0
 
+signal player_death
+
 @onready var camera_controller_anchor: Marker3D = $CameraControllerAnchor
 
 func _physics_process(delta: float) -> void:
@@ -24,3 +26,7 @@ func _physics_process(delta: float) -> void:
 		new_velocity = Vector2(direction.x, direction.z) * SPEED
 	velocity = Vector3(new_velocity.x, velocity.y, new_velocity.y)
 	move_and_slide()
+
+func die():
+	print("dead")
+	emit_signal("player_death")

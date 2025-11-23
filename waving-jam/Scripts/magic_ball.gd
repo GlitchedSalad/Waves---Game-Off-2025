@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var speed : float = 10.0
+@export var speed : float = 15.0
 @export var damage : float = 10.0
 
 func _ready() -> void:
@@ -17,7 +17,7 @@ func _physics_process(delta):
 
 func _on_hurt_box_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Enemy"):
-		body.queue_free()
+		body.hit(damage)
 		queue_free()
 
 
