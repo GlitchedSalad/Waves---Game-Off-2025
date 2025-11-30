@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b04jwwfkxlajt"]
+[gd_scene load_steps=11 format=3 uid="uid://b04jwwfkxlajt"]
 
 [ext_resource type="Script" uid="uid://bx4b1278hr7oi" path="res://Scripts/flapper.gd" id="1_1g6tv"]
 [ext_resource type="Texture2D" uid="uid://c3doimts1iwck" path="res://Textures/Enemies/Flapper/flapper1.png" id="2_y58p6"]
@@ -7,8 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://nrp5pccfav4d" path="res://Textures/Enemies/Flapper/flapperhurt2.png" id="5_ne2sn"]
 [ext_resource type="PackedScene" uid="uid://b52gx18ylb8b3" path="res://Scenes/BaseNodes/health_node.tscn" id="5_y58p6"]
 [ext_resource type="Texture2D" uid="uid://bskghclkdf1l8" path="res://Textures/Enemies/Flapper/flapperhurt1.png" id="6_c3207"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_mrqeg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_okhlb"]
 animations = [{
@@ -38,11 +36,13 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_mbxqc"]
+radius = 0.394584
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mrqeg"]
+
 [node name="Flapper" type="CharacterBody3D" groups=["Enemy"]]
 script = ExtResource("1_1g6tv")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_mrqeg")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 billboard = 1
@@ -56,4 +56,14 @@ frame_progress = 0.302545
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_mbxqc")
+
+[node name="HurtBox" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+shape = SubResource("SphereShape3D_mrqeg")
+
 [connection signal="death" from="HealthNode" to="." method="_on_health_node_death"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="body_exited" from="HurtBox" to="." method="_on_hurt_box_body_exited"]

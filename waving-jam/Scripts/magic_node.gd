@@ -4,8 +4,6 @@ extends Node
 @export var mp_per_second := 5.0
 var current_magic := 10.0
 
-signal death
-
 func _ready() -> void:
 	current_magic = total_magic
 

@@ -10,9 +10,17 @@ config_version=5
 
 [application]
 
-config/name="waving jam"
+config/name="Wizards Hate Waves"
 run/main_scene="uid://cv0tm5wj6mcve"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
+config/icon="uid://bxc0l2mwvdlmv"
+boot_splash/minimum_display_time=10
+
+[autoload]
+
+Globals="*res://Scripts/globals.gd"
 
 [display]
 
@@ -81,3 +89,6 @@ esc={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/default_filters/use_nearest_mipmap_filter=true
+textures/decals/filter=0
+textures/light_projectors/filter=0

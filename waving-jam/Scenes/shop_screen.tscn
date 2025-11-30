@@ -1,8 +1,334 @@
-[gd_scene format=3 uid="uid://cxe24h4d4fwrf"]
+[gd_scene load_steps=15 format=3 uid="uid://cxe24h4d4fwrf"]
+
+[ext_resource type="Script" uid="uid://mfsxylccqy1t" path="res://Scripts/shop_screen.gd" id="1_c4sdm"]
+[ext_resource type="Texture2D" uid="uid://dxtwtfl5nyxvm" path="res://Textures/shop.png" id="2_mxkac"]
+[ext_resource type="Texture2D" uid="uid://gv2ft8dk87i1" path="res://Textures/shop_bg.png" id="2_r5i3s"]
+[ext_resource type="Texture2D" uid="uid://cb33xxq6hns7k" path="res://Textures/health_drop.png" id="4_5ev7h"]
+[ext_resource type="Texture2D" uid="uid://b2hbgaycrpod1" path="res://Textures/magic_drop.png" id="5_n5w7h"]
+[ext_resource type="Texture2D" uid="uid://qrqsus4q8mvu" path="res://Textures/spell_icon.png" id="6_07w6d"]
+[ext_resource type="Script" uid="uid://cn584tj8syh24" path="res://Scenes/tooltip.gd" id="8_i7l1w"]
+[ext_resource type="Script" uid="uid://do2v4scpjpn8o" path="res://Scripts/tooltip_interactable.gd" id="8_n5w7h"]
+[ext_resource type="Texture2D" uid="uid://8581n4ta6wwf" path="res://Textures/speed_icon.png" id="9_n5w7h"]
+[ext_resource type="Texture2D" uid="uid://tlsviccal5rk" path="res://Textures/health_upgrage.png" id="10_07w6d"]
+
+[sub_resource type="Animation" id="Animation_et8os"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(236, 150)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(413, 28)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_r5i3s"]
+resource_name = "default"
+length = 1.06667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.168172, 0.409696, 0.670429, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(236, 150), Vector2(302, 192), Vector2(189, 120), Vector2(287, 182), Vector2(154, 98)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.168172, 0.409696, 0.670429, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(413, 28), Vector2(380, 7), Vector2(437, 43), Vector2(388, 12), Vector2(454, 54)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3247, 0.785017),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0959931, -0.136136]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jlak5"]
+_data = {
+&"RESET": SubResource("Animation_et8os"),
+&"default": SubResource("Animation_r5i3s")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tmrli"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+corner_detail = 2
+shadow_color = Color(0, 0, 0, 0.490196)
+shadow_size = 2
+shadow_offset = Vector2(4, 4)
+anti_aliasing = false
 
 [node name="ShopScreen" type="Control"]
 process_mode = 2
+z_index = 2
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c4sdm")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.529412)
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_r5i3s")
+
+[node name="ShopIcon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 413.0
+offset_top = 28.0
+offset_right = 649.0
+offset_bottom = 178.0
+texture = ExtResource("2_mxkac")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ShopIcon"]
+libraries = {
+&"": SubResource("AnimationLibrary_jlak5")
+}
+playback_auto_capture = false
+
+[node name="HealthButton" type="TextureButton" parent="."]
+layout_mode = 2
+offset_left = 358.0
+offset_top = 264.0
+offset_right = 458.0
+offset_bottom = 364.0
+size_flags_horizontal = 4
+texture_normal = ExtResource("4_5ev7h")
+script = ExtResource("8_n5w7h")
+
+[node name="Tooltip" type="PanelContainer" parent="HealthButton"]
+editor_description = "Add a RichTextLabel"
+visible = false
+top_level = true
+z_index = 5
+layout_mode = 0
+offset_left = 357.0
+offset_top = 212.0
+offset_right = 548.0
+offset_bottom = 312.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tmrli")
+script = ExtResource("8_i7l1w")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HealthButton/Tooltip"]
+z_index = 6
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[b]Health Packs Upgrade[/b]
+Enemies have a chance to drop health packs after dying"
+fit_content = true
+
+[node name="MpButton" type="TextureButton" parent="."]
+layout_mode = 2
+offset_left = 255.0
+offset_top = 447.0
+offset_right = 355.0
+offset_bottom = 547.0
+size_flags_horizontal = 4
+texture_normal = ExtResource("5_n5w7h")
+script = ExtResource("8_n5w7h")
+
+[node name="Tooltip" type="PanelContainer" parent="MpButton"]
+editor_description = "Add a RichTextLabel"
+visible = false
+top_level = true
+z_index = 5
+layout_mode = 0
+offset_left = 96.0
+offset_top = 7.0
+offset_right = 287.0
+offset_bottom = 107.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tmrli")
+script = ExtResource("8_i7l1w")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MpButton/Tooltip"]
+z_index = 6
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[b]Magic Bar Upgrade[/b]
+Spells require less magic to cast"
+fit_content = true
+
+[node name="SpellButton" type="TextureButton" parent="."]
+layout_mode = 2
+offset_left = 485.0
+offset_top = 457.0
+offset_right = 585.0
+offset_bottom = 557.0
+size_flags_horizontal = 4
+texture_normal = ExtResource("6_07w6d")
+script = ExtResource("8_n5w7h")
+
+[node name="Tooltip" type="PanelContainer" parent="SpellButton"]
+editor_description = "Add a RichTextLabel"
+visible = false
+top_level = true
+z_index = 5
+layout_mode = 0
+offset_left = 96.0
+offset_top = 7.0
+offset_right = 287.0
+offset_bottom = 107.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tmrli")
+script = ExtResource("8_i7l1w")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SpellButton/Tooltip"]
+z_index = 6
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[b]Spell Upgrade[/b]
+Increases size of spell"
+fit_content = true
+
+[node name="SpeedButton" type="TextureButton" parent="."]
+layout_mode = 2
+offset_left = 736.0
+offset_top = 457.0
+offset_right = 836.0
+offset_bottom = 557.0
+size_flags_horizontal = 4
+texture_normal = ExtResource("9_n5w7h")
+script = ExtResource("8_n5w7h")
+
+[node name="Tooltip" type="PanelContainer" parent="SpeedButton"]
+editor_description = "Add a RichTextLabel"
+visible = false
+top_level = true
+z_index = 5
+layout_mode = 0
+offset_left = 96.0
+offset_top = 7.0
+offset_right = 287.0
+offset_bottom = 107.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tmrli")
+script = ExtResource("8_i7l1w")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SpeedButton/Tooltip"]
+z_index = 6
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[b]Speed Upgrade[/b]
+Upgrades your movement speed"
+fit_content = true
+
+[node name="HealthUpgradeButton" type="TextureButton" parent="."]
+layout_mode = 2
+offset_left = 607.0
+offset_top = 261.0
+offset_right = 707.0
+offset_bottom = 361.0
+size_flags_horizontal = 4
+texture_normal = ExtResource("10_07w6d")
+script = ExtResource("8_n5w7h")
+
+[node name="Tooltip" type="PanelContainer" parent="HealthUpgradeButton"]
+editor_description = "Add a RichTextLabel"
+visible = false
+top_level = true
+z_index = 5
+layout_mode = 0
+offset_left = 96.0
+offset_top = 7.0
+offset_right = 287.0
+offset_bottom = 107.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tmrli")
+script = ExtResource("8_i7l1w")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HealthUpgradeButton/Tooltip"]
+z_index = 6
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[b]Health Pack+ Upgrade[/b]
+Health packs recover more health"
+fit_content = true
+
+[connection signal="pressed" from="HealthButton" to="." method="_on_health_button_pressed"]
+[connection signal="pressed" from="MpButton" to="." method="_on_mp_button_pressed"]
+[connection signal="pressed" from="SpellButton" to="." method="_on_spell_button_pressed"]
+[connection signal="pressed" from="SpeedButton" to="." method="_on_speed_button_pressed"]
+[connection signal="pressed" from="HealthUpgradeButton" to="." method="_on_health_upgrade_button_pressed"]

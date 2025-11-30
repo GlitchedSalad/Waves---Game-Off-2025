@@ -1,23 +1,50 @@
-[gd_scene load_steps=27 format=3 uid="uid://c4yhkvcyss5u6"]
+[gd_scene load_steps=31 format=3 uid="uid://c4yhkvcyss5u6"]
 
 [ext_resource type="Script" uid="uid://xdf5jjorhyp0" path="res://PlayerCharacter/scripts/player.gd" id="1_glpr6"]
 [ext_resource type="Script" uid="uid://8ml0aatbdmsh" path="res://PlayerCharacter/scripts/camera_controller.gd" id="2_pjt0s"]
 [ext_resource type="Texture2D" uid="uid://c7721v7ms8wx6" path="res://PlayerCharacter/textures/crosshair.png" id="3_bhb5x"]
 [ext_resource type="PackedScene" uid="uid://0fsukifbaqlj" path="res://PlayerCharacter/Interact/interact_ray.tscn" id="3_qht06"]
 [ext_resource type="Texture2D" uid="uid://ht0gdd4w5xt5" path="res://PlayerCharacter/textures/right2.png" id="4_12jk3"]
-[ext_resource type="Script" uid="uid://didowbni5wyok" path="res://PlayerCharacter/scenes/deflect_area.gd" id="4_cy5jc"]
+[ext_resource type="Script" uid="uid://didowbni5wyok" path="res://PlayerCharacter/scripts/deflect_area.gd" id="4_cy5jc"]
 [ext_resource type="Script" uid="uid://bv6dh211hikuy" path="res://PlayerCharacter/scripts/cross_hair.gd" id="5_fjf58"]
 [ext_resource type="Texture2D" uid="uid://tci6fxb1jr3b" path="res://PlayerCharacter/textures/right3.png" id="5_h2tqs"]
-[ext_resource type="Script" uid="uid://1eio6ljvfeix" path="res://PlayerCharacter/scenes/ui.gd" id="5_j4l7d"]
+[ext_resource type="Script" uid="uid://1eio6ljvfeix" path="res://PlayerCharacter/scripts/ui.gd" id="5_j4l7d"]
 [ext_resource type="Texture2D" uid="uid://djomvqagtjtx8" path="res://PlayerCharacter/textures/right1.png" id="6_7dbeg"]
-[ext_resource type="Script" uid="uid://chxoj2m8jp6v5" path="res://PlayerCharacter/scenes/hands.gd" id="6_wlegc"]
+[ext_resource type="Script" uid="uid://chxoj2m8jp6v5" path="res://PlayerCharacter/scripts/hands.gd" id="6_wlegc"]
 [ext_resource type="Texture2D" uid="uid://cwqj4mokgi77b" path="res://PlayerCharacter/textures/left1.png" id="7_12jk3"]
 [ext_resource type="Texture2D" uid="uid://bjrq00a2h6aot" path="res://PlayerCharacter/textures/left2.png" id="9_12jk3"]
 [ext_resource type="PackedScene" uid="uid://b52gx18ylb8b3" path="res://Scenes/BaseNodes/health_node.tscn" id="13_h7ssa"]
 [ext_resource type="PackedScene" uid="uid://w4thrws285ef" path="res://Scenes/BaseNodes/magic_node.tscn" id="15_knnqv"]
+[ext_resource type="Texture2D" uid="uid://deogqptnova3b" path="res://Textures/particle.png" id="16_knnqv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d5b0p"]
 radius = 0.4
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_no6k8"]
+emission_shape = 1
+emission_sphere_radius = 0.5
+inherit_velocity_ratio = 1.0
+direction = Vector3(0, 0, -1)
+spread = 180.0
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, -9, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pnac4"]
+transparency = 2
+alpha_scissor_threshold = 1.0
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_color = Color(0, 1, 0, 1)
+albedo_texture = ExtResource("16_knnqv")
+texture_filter = 0
+texture_repeat = false
+disable_receive_shadows = true
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_pable"]
+material = SubResource("StandardMaterial3D_pnac4")
+size = Vector2(0.2, 0.2)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_j4l7d"]
 radius = 2.5
@@ -189,6 +216,18 @@ script = ExtResource("1_glpr6")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_d5b0p")
 
+[node name="HealParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+emitting = false
+amount = 60
+lifetime = 2.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_no6k8")
+draw_pass_1 = SubResource("QuadMesh_pable")
+
 [node name="CameraController" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 top_level = true
@@ -205,7 +244,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 left_anim = NodePath("../../UI/Hands/LeftAnim")
 right_anim = NodePath("../../UI/Hands/RightAnim")
 magic_meter = NodePath("../../MagicNode")
-magic_cost = 10.0
 
 [node name="DeflectArea" type="Area3D" parent="CameraControllerAnchor" node_paths=PackedStringArray("magic_meter")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.00306445)
@@ -318,3 +356,4 @@ total_health = 100.0
 [node name="MagicNode" parent="." instance=ExtResource("15_knnqv")]
 
 [connection signal="colliding" from="CameraControllerAnchor/InteractRay" to="UI/CrossHair" method="_on_interact_ray_colliding"]
+[connection signal="death" from="HealthNode" to="." method="die"]

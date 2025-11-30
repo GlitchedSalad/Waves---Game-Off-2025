@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxgfp6a2n1gdd"]
+[gd_scene load_steps=2 format=3 uid="uid://dthjtfp3xd1td"]
 
-[ext_resource type="Script" uid="uid://dgh11ul388433" path="res://Scripts/death_screen.gd" id="1_8hps1"]
+[ext_resource type="Script" uid="uid://c0dtd0t5oxjym" path="res://Scripts/win_screen.gd" id="1_l5sol"]
 
-[node name="DeathScreen" type="Control"]
+[node name="WinScreen" type="Control"]
 process_mode = 2
 layout_mode = 3
 anchors_preset = 15
@@ -11,7 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_8hps1")
+script = ExtResource("1_l5sol")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -53,8 +53,8 @@ offset_bottom = 601.0
 theme_override_font_sizes/normal_font_size = 50
 theme_override_font_sizes/bold_font_size = 100
 bbcode_enabled = true
-text = "[b]You Died![/b]
-try again?"
+text = "[b]You Won![/b]
+Congrats, that's it..."
 horizontal_alignment = 1
 vertical_alignment = 1
 

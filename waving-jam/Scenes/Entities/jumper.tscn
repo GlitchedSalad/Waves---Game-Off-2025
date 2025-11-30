@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://qbtpgjp0j0i0"]
+[gd_scene load_steps=11 format=3 uid="uid://qbtpgjp0j0i0"]
 
 [ext_resource type="Script" uid="uid://dbnck1nw7ihyt" path="res://Scripts/jumper.gd" id="1_kxvoi"]
 [ext_resource type="Texture2D" uid="uid://gl414o3iax43" path="res://Textures/Enemies/Hopper/Hopper1.png" id="2_s2nl1"]
@@ -43,6 +43,9 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_nx7bq"]
+radius = 0.68991
+
 [node name="Jumper" type="CharacterBody3D" groups=["Enemy"]]
 script = ExtResource("1_kxvoi")
 
@@ -57,11 +60,15 @@ billboard = 2
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_bua6k")
-animation = &"jump"
-frame = 1
-frame_progress = 1.0
 
 [node name="HealthNode" parent="." instance=ExtResource("5_s2nl1")]
 
+[node name="HurtBox" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+shape = SubResource("SphereShape3D_nx7bq")
+
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="death" from="HealthNode" to="." method="_on_health_node_death"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="body_exited" from="HurtBox" to="." method="_on_hurt_box_body_exited"]

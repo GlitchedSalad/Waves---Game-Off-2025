@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb33xxq6hns7k"
-path.s3tc="res://.godot/imported/health_drop.png-dfbef08c19b4c7566ff360a8d938cc7f.s3tc.ctex"
+uid="uid://8581n4ta6wwf"
+path="res://.godot/imported/speed_icon.png-d7b9f38b21dbd7885d65d3e9e8ae6f29.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/health_drop.png"
-dest_files=["res://.godot/imported/health_drop.png-dfbef08c19b4c7566ff360a8d938cc7f.s3tc.ctex"]
+source_file="res://Textures/speed_icon.png"
+dest_files=["res://.godot/imported/speed_icon.png-d7b9f38b21dbd7885d65d3e9e8ae6f29.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

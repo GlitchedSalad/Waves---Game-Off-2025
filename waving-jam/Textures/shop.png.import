@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb33xxq6hns7k"
-path.s3tc="res://.godot/imported/health_drop.png-dfbef08c19b4c7566ff360a8d938cc7f.s3tc.ctex"
+uid="uid://dxtwtfl5nyxvm"
+path="res://.godot/imported/shop.png-3c1fa88dbf9c6b6bc8bde2bfd011306d.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/health_drop.png"
-dest_files=["res://.godot/imported/health_drop.png-dfbef08c19b4c7566ff360a8d938cc7f.s3tc.ctex"]
+source_file="res://Textures/shop.png"
+dest_files=["res://.godot/imported/shop.png-3c1fa88dbf9c6b6bc8bde2bfd011306d.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

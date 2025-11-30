@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://b3e08bj4ma6mh" path="res://Scenes/geometry.tscn" id="4_7ajqe"]
 [ext_resource type="PackedScene" uid="uid://bxgfp6a2n1gdd" path="res://Scenes/death_screen.tscn" id="5_jp2t1"]
 [ext_resource type="Script" uid="uid://hv8hrc24fkyr" path="res://Scripts/stopwatch.gd" id="6_2hy7t"]
+[ext_resource type="PackedScene" uid="uid://dthjtfp3xd1td" path="res://Scenes/win_screen.tscn" id="6_jp2t1"]
 [ext_resource type="PackedScene" uid="uid://cxe24h4d4fwrf" path="res://Scenes/shop_screen.tscn" id="7_7ajqe"]
-[ext_resource type="Script" uid="uid://mfsxylccqy1t" path="res://Scenes/shop_screen.gd" id="8_jp2t1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_036b0"]
 sky_top_color = Color(0.475052, 0.573138, 0.998402, 1)
@@ -30,10 +30,8 @@ script = ExtResource("1_1nyf6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66049, 0)
 
 [node name="WaveSpawnManager" parent="." node_paths=PackedStringArray("_player", "_shop_screen") instance=ExtResource("3_dvddb")]
-_range = 30.0
 _player = NodePath("../PlayerController")
 _shop_screen = NodePath("../ShopScreen")
-time_between_enemy_spawns = 1.0
 
 [node name="Geometry" parent="." instance=ExtResource("4_7ajqe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.94493, 0)
@@ -46,13 +44,20 @@ sky_mode = 1
 environment = SubResource("Environment_pkg7o")
 
 [node name="DeathScreen" parent="." instance=ExtResource("5_jp2t1")]
+visible = false
+
+[node name="WinScreen" parent="." instance=ExtResource("6_jp2t1")]
+visible = false
 
 [node name="Stopwatch" type="Node" parent="."]
 script = ExtResource("6_2hy7t")
 
 [node name="ShopScreen" parent="." instance=ExtResource("7_7ajqe")]
-script = ExtResource("8_jp2t1")
+visible = false
 
 [connection signal="player_death" from="PlayerController" to="." method="_on_player_died"]
+[connection signal="win" from="WaveSpawnManager" to="." method="_on_wave_spawn_manager_win"]
 [connection signal="retry_requested" from="DeathScreen" to="." method="_on_death_screen_retry_requested"]
 [connection signal="to_title_requested" from="DeathScreen" to="." method="_on_death_screen_to_title_requested"]
+[connection signal="retry_requested" from="WinScreen" to="." method="_on_death_screen_retry_requested"]
+[connection signal="to_title_requested" from="WinScreen" to="." method="_on_death_screen_to_title_requested"]

@@ -4,13 +4,15 @@ enum States {TARGETING, WAVED}
 
 var player : CharacterBody3D
 var state = States.TARGETING
+var player_in_hurt_box = false
 
 @onready var timer = $AttackTimer
 
 const SPEED := 5.0
 const GRAVITY := 10.0
+const DAMAGE := 20.0
 
-signal death
+signal death(pos)
 
 func _ready() -> void:
 	$AnimatedSprite3D.play("default")
@@ -53,5 +55,17 @@ func _on_wave_recover():
 	timer.start()
 
 func _on_health_node_death() -> void:
-	emit_signal("death")
+	emit_signal("death", global_position)
 	queue_free()
+
+func _on_hurt_box_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		player_in_hurt_box = true
+
+func _on_hurt_box_body_exited(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		player_in_hurt_box = false
+
+func _process(delta: float) -> void:
+	if player_in_hurt_box and state == States.TARGETING:
+		player.hit(DAMAGE * delta)

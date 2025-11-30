@@ -5,6 +5,7 @@ extends Node3D
 
 func _ready() -> void:
 	$AnimatedSprite3D.play("default")
+	scale = Vector3.ONE * Globals.spell_size
 
 func init(rot : Vector3, pos : Vector3):
 	rotation = rot
@@ -18,6 +19,10 @@ func _physics_process(delta):
 func _on_hurt_box_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Enemy"):
 		body.hit(damage)
+		$AnimatedSprite3D.queue_free()
+		$HurtBox.queue_free()
+		$GPUParticles3D.emitting = true
+		await $GPUParticles3D.finished
 		queue_free()
 
 

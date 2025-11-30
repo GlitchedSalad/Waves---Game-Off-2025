@@ -5,6 +5,6 @@ extends Control
 @onready var health_bar = $HealthBar
 @onready var magic_bar = $MagicBar
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	health_bar.value = health.current_health
 	magic_bar.value = magic.current_magic

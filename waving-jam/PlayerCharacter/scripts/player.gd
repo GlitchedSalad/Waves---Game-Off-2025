@@ -23,10 +23,17 @@ func _physics_process(delta: float) -> void:
 	var new_velocity = Vector2.ZERO
 	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0.0, input_dir.y)).normalized()
 	if direction:
-		new_velocity = Vector2(direction.x, direction.z) * SPEED
+		new_velocity = Vector2(direction.x, direction.z) * SPEED * Globals.speed_boost
 	velocity = Vector3(new_velocity.x, velocity.y, new_velocity.y)
 	move_and_slide()
 
 func die():
 	print("dead")
 	emit_signal("player_death")
+
+func _heal(hp):
+	$HealthNode.heal(hp)
+	$HealParticles.emitting = true
+
+func hit(dmg):
+	$HealthNode.damage(dmg)

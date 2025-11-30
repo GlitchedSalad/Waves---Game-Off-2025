@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://k4yoeq5erjp7"]
+
+[ext_resource type="Script" uid="uid://cn584tj8syh24" path="res://Scenes/tooltip.gd" id="1_35poo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tmrli"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+corner_detail = 2
+shadow_color = Color(0, 0, 0, 0.490196)
+shadow_size = 2
+shadow_offset = Vector2(4, 4)
+anti_aliasing = false
+
+[node name="Tooltip" type="PanelContainer"]
+editor_description = "Add a RichTextLabel"
+top_level = true
+z_index = 5
+offset_left = -85.0
+offset_right = 106.0
+offset_bottom = 100.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tmrli")
+script = ExtResource("1_35poo")
