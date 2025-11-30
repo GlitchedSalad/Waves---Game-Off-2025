@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvvu3uw6rq1t4"]
+
+[ext_resource type="Script" uid="uid://bvdnlhv73a4g0" path="res://Scenes/Entities/health_drop.gd" id="1_3t5us"]
+[ext_resource type="Texture2D" uid="uid://cb33xxq6hns7k" path="res://Textures/health_drop.png" id="1_q0rd0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_q0rd0"]
+radius = 1.7452
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_q0rd0"]
+height = 0.708984
+radius = 0.40918
+
+[node name="HealthDrop" type="RigidBody3D"]
+axis_lock_linear_x = true
+axis_lock_linear_z = true
+script = ExtResource("1_3t5us")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1
+double_sided = false
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_q0rd0")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_q0rd0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_q0rd0")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -1,0 +1,130 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv0tm5wj6mcve"]
+
+[ext_resource type="Script" uid="uid://qpxgh4tcnwdb" path="res://Scripts/title.gd" id="1_ekrfg"]
+[ext_resource type="PackedScene" uid="uid://b3e08bj4ma6mh" path="res://Scenes/geometry.tscn" id="1_w31pl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ts64c"]
+bg_color = Color(1, 1, 1, 0.686275)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_left = 12.0
+expand_margin_top = 12.0
+expand_margin_right = 12.0
+expand_margin_bottom = 12.0
+
+[node name="Title" type="Node3D"]
+script = ExtResource("1_ekrfg")
+
+[node name="Geometry" parent="." instance=ExtResource("1_w31pl")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.60446, 0.796636, 0, -0.796636, -0.60446, -42.7685, 37.0629, -2.25272)
+sky_mode = 1
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -42.7685, 37.0629, 0)
+projection = 1
+size = 90.0
+
+[node name="MainScreen" type="CanvasLayer" parent="."]
+
+[node name="Title" type="Label" parent="MainScreen"]
+offset_left = 57.0
+offset_top = 93.0
+offset_right = 576.0
+offset_bottom = 258.0
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 60
+text = "Wizards hate waves
+of water & enemies"
+
+[node name="Play" type="Button" parent="MainScreen"]
+offset_left = 118.0
+offset_top = 322.0
+offset_right = 219.0
+offset_bottom = 390.0
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 30
+text = "Play"
+flat = true
+
+[node name="Quit" type="Button" parent="MainScreen"]
+offset_left = 436.0
+offset_top = 322.0
+offset_right = 537.0
+offset_bottom = 390.0
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 30
+text = "Quit
+"
+flat = true
+
+[node name="Help" type="Button" parent="MainScreen"]
+offset_left = 278.0
+offset_top = 322.0
+offset_right = 379.0
+offset_bottom = 390.0
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 30
+text = "Help"
+flat = true
+
+[node name="HelpScreen" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="HelpScreen"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0.286275)
+
+[node name="PanelContainer" type="PanelContainer" parent="HelpScreen"]
+offset_left = 45.0
+offset_top = 57.0
+offset_right = 638.0
+offset_bottom = 595.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ts64c")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HelpScreen/PanelContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/bold_italics_font_size = 25
+theme_override_font_sizes/italics_font_size = 25
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 30
+bbcode_enabled = true
+text = "[b]Controls:[/b]
+[WASD] To [i]move[/i]
+
+[Space] To [i]jump[/i]
+
+[Left Click] To cast a mighty [i]spell[/i]
+
+[Right Click] To [i]wave[/i] and disperse your enemies! 
+						Or to enter the shop!
+
+Also... Wizards hate water...
+
+[b][i]After every wave of enemies, you can visit the shop to get one upgrade!"
+fit_content = true
+
+[node name="Back" type="Button" parent="HelpScreen"]
+offset_left = 278.0
+offset_top = 520.0
+offset_right = 379.0
+offset_bottom = 588.0
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 30
+text = "Back
+"
+flat = true
+
+[connection signal="pressed" from="MainScreen/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MainScreen/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MainScreen/Help" to="." method="_on_help_pressed"]
+[connection signal="pressed" from="HelpScreen/Back" to="." method="_on_back_pressed"]

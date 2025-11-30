@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://w4thrws285ef"]
+
+[ext_resource type="Script" uid="uid://o5uqo20frj1m" path="res://Scripts/magic_node.gd" id="1_g6b88"]
+
+[node name="MagicNode" type="Node"]
+script = ExtResource("1_g6b88")
+total_magic = 100.0
